@@ -86,8 +86,12 @@ if (! function_exists('getAmount')) {
 }
 
 if (! function_exists('printSafeHtml')) {
-    function printSafeHtml(string $html): string
+    function printSafeHtml(?string $html): string
     {
+        if ($html === null) {
+            return '';
+        }
+
         static $purifier = null;
 
         if ($purifier === null) {
